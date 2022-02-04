@@ -19,7 +19,7 @@ func main() {
 	gameWidth, gameHeight := 640, 480
 
 	ebiten.SetWindowSize(gameWidth, gameHeight)
-	ebiten.SetWindowTitle("XXXGAMETEMPLATE")
+	ebiten.SetWindowTitle("ebiten-game-template")
 
 	game := &Game{
 		Width:  gameWidth,
