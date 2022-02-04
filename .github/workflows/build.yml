@@ -144,3 +144,81 @@ jobs:
           ebiten-game-template-lin.tar.gz
           ebiten-game-template-mac.tar.gz
           ebiten-game-template.exe
+
+  deploy-win:
+    name: Deploy Windows build to itch.io
+    if: startsWith(github.event.ref, 'refs/tags/v')
+    needs: build-win
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: ebiten-game-template-win
+    - uses: josephbmanley/butler-publish-itchio-action@master
+      env:
+        BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+        CHANNEL: windows
+        ITCH_GAME: ebiten-game-template
+        ITCH_USER: sinisterstuf
+        PACKAGE: ebiten-game-template.exe
+        VERSION: ${{github.ref_name}}
+
+  deploy-mac:
+    name: Deploy MacOs build to itch.io
+    if: startsWith(github.event.ref, 'refs/tags/v')
+    needs: build-mac
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: ebiten-game-template-mac
+    - name: Extract tarball
+      shell: bash
+      run: tar -zxvf ebiten-game-template-mac.tar.gz
+    - uses: josephbmanley/butler-publish-itchio-action@master
+      env:
+        BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+        CHANNEL: mac
+        ITCH_GAME: ebiten-game-template
+        ITCH_USER: sinisterstuf
+        PACKAGE: ebiten-game-template
+        VERSION: ${{github.ref_name}}
+
+  deploy-lin:
+    name: Deploy Linux build to itch.io
+    if: startsWith(github.event.ref, 'refs/tags/v')
+    needs: build-lin
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: ebiten-game-template-lin
+    - name: Extract tarball
+      shell: bash
+      run: tar -zxvf ebiten-game-template-lin.tar.gz
+    - uses: josephbmanley/butler-publish-itchio-action@master
+      env:
+        BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+        CHANNEL: linux
+        ITCH_GAME: ebiten-game-template
+        ITCH_USER: sinisterstuf
+        PACKAGE: ebiten-game-template
+        VERSION: ${{github.ref_name}}
+
+  deploy-web:
+    name: Deploy Web build to itch.io
+    if: startsWith(github.event.ref, 'refs/tags/v')
+    needs: build-web
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: ebiten-game-template-web
+    - uses: josephbmanley/butler-publish-itchio-action@master
+      env:
+        BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+        CHANNEL: web
+        ITCH_GAME: ebiten-game-template
+        ITCH_USER: sinisterstuf
+        PACKAGE: dist/web
+        VERSION: ${{github.ref_name}}
