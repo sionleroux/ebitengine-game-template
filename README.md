@@ -2,6 +2,22 @@
 
 A basic skeleton for a 2D game using the [Ebiten](https://ebiten.org/) library.
 
+-----✂️-----
+
+> ⚠️ After cloning this repository:
+
+> Write your OWN name name in the LICENSE file and run this command to replace the game name (tested on Linux and Mac):
+
+```bash
+grep -Rl ebiten-game-template | xargs sed -i '' -e "s/ebiten-game-template/${PWD##*/}/"
+```
+
+> it assumes that the game name is the name of the current folder because that is what `go build` will call it.
+
+> Then delete this section from the README, and start editing `main.go` to make your own game!
+
+-----✂️-----
+
 ## For game testers
 
 <!-- TODO: add a link to the latest downloads page -->
