@@ -54,7 +54,7 @@ jobs:
       run: go build
     - name: Tar it up
       shell: bash
-      run: tar -zcvf ebiten-game-template.tar.gz -C ebiten-game-template
+      run: tar -zcvf ebiten-game-template-lin.tar.gz ebiten-game-template LICENSE
     - name: Upload Mac exe
       uses: actions/upload-artifact@v2.2.4
       with:
