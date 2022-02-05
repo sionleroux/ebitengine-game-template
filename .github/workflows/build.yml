@@ -28,12 +28,6 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.17
-    - name: Install dependencies
-      shell: bash
-      run: go get github.com/akavel/rsrc
-    - name: Generate icon resource
-      shell: bash
-      run: rsrc -ico artwork/icon.ico
     - name: Build Windows exe
       shell: bash
       run: go build
