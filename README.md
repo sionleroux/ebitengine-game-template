@@ -29,7 +29,7 @@ Game controls:
 
 ## For programmers
 
-Make sure you have [Go 1.17 or later](https://go.dev/) to contribute to the game
+Make sure you have [Go 1.19 or later](https://go.dev/) to contribute to the game
 
 To build the game yourself, run: `go build .` it will produce an ebiten-game-template file and on Windows ebiten-game-template.exe.
 
