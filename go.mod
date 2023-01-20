@@ -1,4 +1,4 @@
-module github.com/sinisterstuf/ebiten-game-template
+module github.com/sinisterstuf/ebitengine-game-template
 
 go 1.19
 

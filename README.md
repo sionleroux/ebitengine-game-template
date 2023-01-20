@@ -1,15 +1,15 @@
-# ebiten-game-template
+# ebitengine-game-template
 
-A basic skeleton for a 2D game using the [Ebiten](https://ebiten.org/) library.
+A basic skeleton for a 2D game using the [Ebitengine](https://ebitengine.org/) library.
 
 -----✂️-----
 
 > ⚠️ After cloning this repository:
 
-> Write your OWN name name in the LICENSE file and run this command to replace the game name (tested on Linux and Mac):
+> Write your OWN name name in the LICENSE file and find-and-replace `ebitengine-game-template` with your own game's name, for example, by running this command (tested on Linux and Mac):
 
 ```bash
-grep -Rl ebiten-game-template | xargs sed -i '' -e "s/ebiten-game-template/${PWD##*/}/g"
+grep -Rl ebitengine-game-template | xargs sed -i '' -e "s/ebitengine-game-template/${PWD##*/}/g"
 ```
 
 > it assumes that the game name is the name of the current folder because that is what `go build` will call it.
@@ -31,7 +31,7 @@ Game controls:
 
 Make sure you have [Go 1.19 or later](https://go.dev/) to contribute to the game
 
-To build the game yourself, run: `go build .` it will produce an ebiten-game-template file and on Windows ebiten-game-template.exe.
+To build the game yourself, run: `go build .` it will produce an ebitengine-game-template file and on Windows ebitengine-game-template.exe.
 
 To run the tests, run: `go test ./...` but there are no tests yet.
 
