@@ -101,7 +101,7 @@ jobs:
       run: GOOS=js GOARCH=wasm go build -v -ldflags "-w -s" -o dist/web/ebitengine-game-template.wasm
     - name: Copy WASM exec script
       shell: bash
-      run: cp $(go env GOROOT)/misc/wasm/wasm_exec.js dist/web/.
+      run: cp "$(go env GOROOT)/misc/wasm/wasm_exec.js" dist/web/.
     - name: Upload Web build
       uses: actions/upload-artifact@v3
       with:
