@@ -6,9 +6,9 @@ jobs:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Go
-      uses: actions/setup-go@v3
+      uses: actions/setup-go@v5
       with:
         go-version: 1.22
     - name: Install dependencies
@@ -23,16 +23,16 @@ jobs:
     needs: tests
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Go
-      uses: actions/setup-go@v3
+      uses: actions/setup-go@v5
       with:
         go-version: 1.22
     - name: Build Windows exe
       shell: bash
       run: go build
     - name: Upload Windows exe
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ebitengine-game-template-win
         path: |
@@ -44,9 +44,9 @@ jobs:
     needs: tests
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Go
-      uses: actions/setup-go@v3
+      uses: actions/setup-go@v5
       with:
         go-version: 1.22
     - name: Build Mac exe
@@ -56,7 +56,7 @@ jobs:
       shell: bash
       run: tar -zcvf ebitengine-game-template-mac.tar.gz ebitengine-game-template LICENSE
     - name: Upload Mac exe
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ebitengine-game-template-mac
         path: ebitengine-game-template-mac.tar.gz
@@ -66,9 +66,9 @@ jobs:
     needs: tests
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Go
-      uses: actions/setup-go@v3
+      uses: actions/setup-go@v5
       with:
         go-version: 1.22
     - name: Install dependencies
@@ -81,7 +81,7 @@ jobs:
       shell: bash
       run: tar -zcvf ebitengine-game-template-lin.tar.gz ebitengine-game-template LICENSE
     - name: Upload Linux exe
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ebitengine-game-template-lin
         path: ebitengine-game-template-lin.tar.gz
@@ -91,9 +91,9 @@ jobs:
     needs: tests
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Go
-      uses: actions/setup-go@v3
+      uses: actions/setup-go@v5
       with:
         go-version: 1.22
     - name: Build Web binary
@@ -103,7 +103,7 @@ jobs:
       shell: bash
       run: cp "$(go env GOROOT)/misc/wasm/wasm_exec.js" dist/web/.
     - name: Upload Web build
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ebitengine-game-template-web
         path: |
@@ -115,21 +115,21 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-lin, build-mac, build-win]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Download Windows binary
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: ebitengine-game-template-win
     - name: Download Linux binary
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: ebitengine-game-template-lin
     - name: Download Mac binary
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: ebitengine-game-template-mac
     - name: Upload beta testing bundle
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ebitengine-game-template-bundle
         path: |
@@ -145,7 +145,7 @@ jobs:
     needs: build-win
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: ebitengine-game-template-win
     - uses: josephbmanley/butler-publish-itchio-action@master
@@ -163,7 +163,7 @@ jobs:
     needs: build-mac
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: ebitengine-game-template-mac
     - name: Extract tarball
@@ -184,7 +184,7 @@ jobs:
     needs: build-lin
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: ebitengine-game-template-lin
     - name: Extract tarball
@@ -205,7 +205,7 @@ jobs:
     needs: build-web
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: ebitengine-game-template-web
     - uses: josephbmanley/butler-publish-itchio-action@master
